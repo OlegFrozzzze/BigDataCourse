@@ -1,8 +1,17 @@
 package com.mycompany.project.model
 
 object Main2 extends App {
-  private val originalArray = Array(1, 2, 3, 4, 5)
-  private val newArray = originalArray.map(_ + 10)
-  println(newArray.mkString("Array(", ", ", ")"))
-}
-
+  def Array(array: Array[Int]): Unit = {
+    try {
+      if (array.isEmpty) {
+        throw new IllegalArgumentException("Ошибка: передан пустой массив!")
+      }
+      val newArray = array.map(_ + 10)
+      println(newArray.mkString("Array(", ", ", ")"))
+    } catch {
+      case e: IllegalArgumentException =>
+        println(e.getMessage)
+        sys.exit(1)
+    }
+  }
+  }
